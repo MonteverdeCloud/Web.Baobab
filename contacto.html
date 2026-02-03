@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Baobab Magic Spa</title>
+
+    <!-- Favicons / PWA -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple_touch_180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icons/favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icons/favicon_16x16.png">
+    <link rel="shortcut icon" href="/assets/images/icons/favicon.ico">
+    <link rel="mask-icon" href="/assets/images/icons/safari-pinned-tab.svg" color="#13ec80">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#13ec80">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "forest-deep": "#0d1b14",
+                        "earth-gold": "#c5a059",
+                        "mist-green": "#4c9a73"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<script>
+    function sendWhatsApp(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !message) {
+            alert('Por favor complete todos los campos');
+            return;
+        }
+
+        const phoneNumber = '50672460288';
+        const text = `Hola, mi nombre es ${name}. ${message}`;
+        const encodedText = encodeURIComponent(text);
+        const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedText}`;
+
+        window.open(url, '_blank');
+    }
+</script>
+
+<body class="bg-background-light dark:bg-background-dark text-forest-deep dark:text-white min-h-screen">
+    <!-- Navigation Bar -->
+    <header
+        class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10 px-4 md:px-20 lg:px-40 py-3">
+        <div class="max-w-[1200px] mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="text-primary">
+                    <div class="size-12 text-gray-800 dark:text-gray-200">
+                        <img src="/assets/images/icons/logo.svg" alt="Logo" class="w-full h-full">
+                    </div>
+                </div>
+                <h2 class="text-xl font-bold tracking-tight">Baobab Magic Spa</h2>
+            </div>
+            <nav class="hidden md:flex flex-1 justify-center gap-8">
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">Inicio</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Servicios</a>
+                <a class="text-sm font-semibold text-primary" href="#">Contacto</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button
+                    class="flex items-center gap-2 px-4 h-10 rounded-xl bg-primary/10 text-primary font-bold text-sm">
+                    <span>ES / EN</span>
+                    <span class="material-symbols-outlined text-base">expand_more</span>
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden text-forest-deep dark:text-white">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-50 bg-background-light dark:bg-background-dark transform translate-x-full transition-transform duration-300 md:hidden block">
+            <div class="absolute top-6 right-6 z-20">
+                <button id="close-menu-btn" class="text-forest-deep dark:text-white p-2">
+                    <span class="material-symbols-outlined text-3xl">close</span>
+                </button>
+            </div>
+            <div class="w-full h-full overflow-y-auto flex flex-col justify-start items-center pt-32 pb-10">
+                <div class="flex flex-col gap-4 w-full px-8">
+                    <a class="w-full text-center py-4 bg-white/5 rounded-xl text-2xl font-bold hover:text-primary hover:bg-white/10 transition-all"
+                        href="index.html">Inicio</a>
+                    <a class="w-full text-center py-4 bg-white/5 rounded-xl text-2xl font-bold hover:text-primary hover:bg-white/10 transition-all"
+                        href="#">Servicios</a>
+                    <a class="w-full text-center py-4 bg-primary/20 text-primary rounded-xl text-2xl font-bold hover:bg-primary/30 transition-all"
+                        href="contacto.html">Contacto</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            function toggleMenu() {
+                mobileMenu.classList.toggle('translate-x-full');
+                if (!mobileMenu.classList.contains('translate-x-full')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        </script>
+    </header>
+    <main class="max-w-[1200px] mx-auto px-4 py-8 lg:py-12">
+        <!-- Hero Background Section -->
+        <div class="mb-12">
+            <div class="relative w-full rounded-xl lg:rounded-3xl overflow-hidden aspect-[21/9] lg:aspect-[3/1]">
+                <div class="absolute inset-0 bg-cover bg-center" data-alt="Monteverde cloud forest landscape in mist"
+                    style='background-image: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDD5RTCzeuBK8CKvcX4SdfVEMG6t8apvl0-ArI7WZoph2ay9ObpS0leUdC0vXeylcAJaxowgBykSPrj6Y_UoY-imsVv-5fYcRq5ystVWt5VkXVcZ_gJ0HOCzIurNxdArlT5hYgBi0BkD25Jf7uXXt5QhpFqPqemsbrQfXm5sbGhu-ikuNYWYteohFi_I3eyozXC1MWrFIQTOkwmWz_LeuZQNoIzCZRK2oP3qxuzrtUhEvmPu2D9f8BZzw2TGEJLao6T3QnKqlnLYLY");'>
+                </div>
+                <div class="absolute inset-0 flex flex-col justify-center px-8 lg:px-16 text-white">
+                    <h1 class="text-4xl lg:text-6xl font-extrabold mb-4 drop-shadow-lg">Contáctanos</h1>
+                    <p class="text-lg lg:text-xl max-w-lg opacity-90 drop-shadow-md">Conecta con la esencia pura de
+                        Monteverde y regálate un momento de paz mágica.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Contact Content Grid -->
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <!-- Left Column: Direct Contact & Map -->
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">chat_bubble</span>
+                        Canales Directos
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- WhatsApp Button Card -->
+                        <a class="group flex flex-col items-start gap-4 p-6 bg-white dark:bg-white/5 border border-primary/10 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
+                            href="https://api.whatsapp.com/send?phone=50672460288" target="_blank">
+                            <div
+                                class="size-12 rounded-full border border-primary text-primary flex items-center justify-center">
+                                <span class="material-symbols-outlined text-2xl">chat</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">WhatsApp</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Respuesta rápida para citas.</p>
+                                <span
+                                    class="inline-block mt-2 text-primary text-sm font-bold group-hover:underline">Chatea
+                                    con nosotros →</span>
+                            </div>
+                        </a>
+                        <!-- Facebook Button Card -->
+                        <a class="group flex flex-col items-start gap-4 p-6 bg-white dark:bg-white/5 border border-primary/10 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
+                            href="https://www.facebook.com/profile.php?id=100028375946361" target="_blank">
+                            <div class="size-12 rounded-full bg-blue-600 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined text-2xl">public</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">Facebook</h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Síguenos y descubre promociones.</p>
+                                <span
+                                    class="inline-block mt-2 text-primary text-sm font-bold group-hover:underline">Visitar
+                                    perfil →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Map Section -->
+                <div class="bg-white dark:bg-white/5 p-4 rounded-2xl shadow-sm border border-primary/10">
+                    <h2 class="text-xl font-bold px-2 pb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">location_on</span>
+                        Nuestra Ubicación
+                    </h2>
+                    <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-200">
+                        <div class="absolute inset-0 bg-cover bg-center" data-alt="Map showing location in Monteverde"
+                            data-location="Monteverde, Costa Rica"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDW5nPy1Qbz5wNK_Dq8M14KSP2Gk1FJxt0nl_v86FgHzl4BXHNzRNHtV1GpiJTRdryMv41RiRVIrsLXR4o-XXywdP9AUqwe65yahmd__61A0JWHzedBaY3DXhOIig8I39s9chal5V8AGBBGEn3ioO1l2Q4Y6ILqASmeu4WFeeWEpUmqZuHnrYKZge2bXZRp07a_fQscQaDlUVwjZPj1eDO7mZ8QdLF0ZUxBivRR7nkX-4BTWcTUYZhaYKwa14UqgAsah1DUK3-Zzt8");'>
+                            <!-- Overlay to simulate map UI -->
+                            <div
+                                class="absolute top-4 left-4 bg-white p-2 rounded-lg shadow-lg text-xs font-bold text-black border border-gray-200">
+                                <a href="https://maps.app.goo.gl/5n4o2LgbHGto8foU9" target="_blank"
+                                    class="hover:text-primary transition-colors cursor-pointer">
+                                    📍 Baobab Magic Spa, Monteverde
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between gap-4">
+                        <p class="text-sm text-gray-600 dark:text-gray-300">
+                            300m Norte de la Escuela, <br />Cerro Plano, Monteverde, Puntarenas.
+                        </p>
+                        <button onclick="window.open('https://maps.app.goo.gl/5n4o2LgbHGto8foU9', '_blank')"
+                            class="flex items-center gap-2 px-6 py-3 border border-primary text-primary font-bold rounded-xl hover:bg-primary hover:text-forest-deep transition-colors shadow-lg shadow-primary/10">
+                            <span class="material-symbols-outlined">directions</span>
+                            <span class="hidden sm:inline">Cómo llegar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Contact Form -->
+            <div class="bg-white dark:bg-white/5 p-8 lg:p-10 rounded-2xl shadow-xl border border-primary/5">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-2">Envíanos un Mensaje</h2>
+                    <p class="text-gray-500 dark:text-gray-400">Completa el formulario y te respoderemos en menos de 24
+                        horas.</p>
+                </div>
+                <form class="space-y-6" onsubmit="sendWhatsApp(event)">
+                    <div>
+                        <label class="block text-sm font-bold mb-2 ml-1" for="name">Nombre Completo</label>
+                        <input
+                            class="w-full h-12 px-4 rounded-xl border-gray-200 dark:border-white/10 dark:bg-black/20 focus:ring-primary focus:border-primary transition-all"
+                            id="name" placeholder="Tu nombre..." type="text" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2 ml-1" for="message">¿En qué podemos ayudarte?</label>
+                        <textarea
+                            class="w-full px-4 py-3 rounded-xl border-gray-200 dark:border-white/10 dark:bg-black/20 focus:ring-primary focus:border-primary transition-all"
+                            id="message" placeholder="Cuéntanos sobre tu interés o reserva..." rows="5"></textarea>
+                    </div>
+                    <button
+                        class="w-full h-14 border border-primary text-primary text-lg font-bold rounded-xl hover:bg-primary hover:text-forest-deep transition-all transform active:scale-[0.98] shadow-lg shadow-primary/10 flex items-center justify-center gap-2"
+                        type="submit">
+                        <span>Enviar Mensaje</span>
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </form>
+                <div
+                    class="mt-8 pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row justify-between gap-4">
+                    <div class="flex items-center gap-3 text-sm text-gray-500">
+                        <span class="material-symbols-outlined text-primary">phone_iphone</span>
+                        <span>+506 7246 0288</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-gray-500">
+                        <span class="material-symbols-outlined text-primary">mail</span>
+                        <span>spabaobabcr@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="mt-20 py-10 border-t border-primary/10 bg-forest-deep text-white">
+        <div class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2 opacity-60">
+                <span class="text-sm font-medium">© 2026 Baobab Magic Spa. Todos los derechos reservados.</span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

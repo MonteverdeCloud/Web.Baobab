@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Baobab Magic SPA</title>
+
+    <!-- Favicons / PWA -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple_touch_180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icons/favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icons/favicon_16x16.png">
+    <link rel="shortcut icon" href="/assets/images/icons/favicon.ico">
+    <link rel="mask-icon" href="/assets/images/icons/safari-pinned-tab.svg" color="#13ec80">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#13ec80">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "forest-deep": "#0d1b14",
+                        "earth-gold": "#c5a059",
+                        "mist-green": "#4c9a73"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Manrope', sans-serif; }
+            .serif-title { font-family: 'Playfair Display', serif; }
+        }
+        .glass-nav {
+            background: rgba(246, 248, 247, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .dark .glass-nav {
+            background: rgba(16, 34, 25, 0.8);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .lang-dropdown:hover .lang-menu {
+            display: block;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-forest-deep dark:text-white transition-colors duration-300">
+    <header class="fixed top-0 w-full z-50 border-b border-mist-green/10 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="size-12 text-gray-800 dark:text-gray-200">
+                        <img src="/assets/images/icons/logo.svg" alt="Logo" class="w-full h-full">
+                    </div>
+                    <h2 class="text-xl font-bold tracking-tight">BAOBAB MAGIC SPA</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-semibold text-primary" href="#">Inicio</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Servicios</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors"
+                        href="contacto.html">Contacto</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <div class="relative lang-dropdown">
+                        <button
+                            class="flex items-center gap-2 px-3 py-2 text-sm font-medium border border-mist-green/20 rounded-lg hover:bg-mist-green/5 transition-colors">
+                            <span class="material-symbols-outlined text-lg">language</span>
+                            ES
+                            <span class="material-symbols-outlined text-xs">expand_more</span>
+                        </button>
+                        <div
+                            class="lang-menu hidden absolute right-0 top-full mt-1 w-32 bg-white dark:bg-forest-deep rounded-xl shadow-xl border border-mist-green/10 py-2 overflow-hidden">
+                            <a class="block px-4 py-2 text-xs font-bold hover:bg-primary/10 hover:text-primary transition-colors"
+                                href="#">ESPAÑOL</a>
+                            <a class="block px-4 py-2 text-xs font-bold text-mist-green hover:bg-primary/10 hover:text-primary transition-colors"
+                                href="#">ENGLISH</a>
+                            <a class="block px-4 py-2 text-xs font-bold text-mist-green/40 cursor-not-allowed"
+                                href="#">FRANÇAIS</a>
+                        </div>
+                    </div>
+                    <button
+                        class="hidden sm:flex bg-primary hover:bg-primary/90 text-forest-deep font-bold py-2.5 px-6 rounded-xl text-sm transition-all shadow-lg shadow-primary/20">
+                        Reservar Ahora
+                    </button>
+                    <button id="mobile-menu-btn" class="md:hidden text-forest-deep dark:text-white">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 z-50 bg-background-light dark:bg-background-dark transform translate-x-full transition-transform duration-300 md:hidden block">
+            <div class="absolute top-6 right-6 z-20">
+                <button id="close-menu-btn" class="text-forest-deep dark:text-white p-2">
+                    <span class="material-symbols-outlined text-3xl">close</span>
+                </button>
+            </div>
+            <div class="w-full h-full overflow-y-auto flex flex-col justify-start items-center pt-32 pb-10">
+                <div class="flex flex-col gap-4 w-full px-8">
+                    <a class="w-full text-center py-4 bg-primary/20 text-primary rounded-xl text-2xl font-bold hover:bg-primary/30 transition-all"
+                        href="#">Inicio</a>
+                    <a class="w-full text-center py-4 bg-white/5 dark:bg-black/20 rounded-xl text-2xl font-bold hover:text-primary hover:bg-white/10 transition-all"
+                        href="#">Servicios</a>
+                    <a class="w-full text-center py-4 bg-white/5 dark:bg-black/20 rounded-xl text-2xl font-bold hover:text-primary hover:bg-white/10 transition-all"
+                        href="contacto.html">Contacto</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            function toggleMenu() {
+                mobileMenu.classList.toggle('translate-x-full');
+                if (!mobileMenu.classList.contains('translate-x-full')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+        </script>
+    </header>
+    <section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-black/40 z-10"></div>
+            <div class="w-full h-full bg-cover bg-center"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6-DqtdopCL6YtnBRA_2Oe8Kd7MnxJT3YhtESqsT8oRckyhBHZAVbUdgNpPR8YB05Ug1mym0j-zkB5bdnEBVsDXReSrSxTeiP_uabxi-QpSc08RvsQn1Y3ayV6A__7dKbh1Aq9l7-aaT_wWSBfM9OZbLSOPrqRZmqnaEsvhGxxZiHYXqyqg2AYkQJFkl6tIm1DkKHhUI4QnFhaNbjKPC4y3hT2BTepkPe_wL9t3aRDVr4Twv9mAZwRLbNQB2OpxpDPVZPV4KHSv6g");'>
+            </div>
+        </div>
+        <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+            <h1 class="serif-title text-white text-5xl md:text-7xl font-bold leading-tight mb-6 drop-shadow-2xl">
+                La Magia de<br />
+                <span class="italic text-primary">Monteverde</span>
+            </h1>
+            <p class="text-white/90 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+                Viva una serenidad total donde el lujo se encuentra con la belleza etérea de Monteverde. Nuestros
+                terapeutas bilingües le esperan en nuestro santuario de montaña.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+                <button
+                    class="w-full sm:w-auto min-w-[200px] h-14 bg-primary text-forest-deep font-bold rounded-xl text-lg hover:scale-105 transition-transform shadow-xl">
+                    Reservar Experiencia
+                </button>
+                <button
+                    class="w-full sm:w-auto min-w-[200px] h-14 bg-white/10 backdrop-blur-md text-white border border-white/20 font-bold rounded-xl text-lg hover:bg-white/20 transition-all">
+                    Ver Servicios
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+            <span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
+        </div>
+    </section>
+    <section class="py-24 px-6 lg:px-12 max-w-7xl mx-auto bg-background-light dark:bg-background-dark">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <div class="absolute -top-10 -left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-earth-gold/10 rounded-full blur-3xl -z-10"></div>
+                <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
+                    <img alt="Filosofía del Spa" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3g0Vms3m0HGIduy0ZIjYGxVo5mFfxvturkVI_7Hi1Kv4rpPhyPN6uPl35AD_FzRLrXR30YPZH4pddMoliRFGt6qJrjfthEstbZvY8dPVbz90xDqfARcPiq7f_m_-K5VqCn1ewH_Fbg5ppyr9OFugRgtvLVFoO26l1w6jj4JemACIPGw1Q_z76_SQjlS8YCSEO5IEHDZBuMw7nW0nrpWIF4RdyZyQgfNAi_aT4ajGqRoat94th_MV8rDPU27496cn1e0_p1ZAGf_0" />
+                </div>
+                <div
+                    class="absolute -bottom-8 -right-8 bg-white dark:bg-forest-deep p-8 rounded-2xl shadow-xl max-w-xs border border-primary/20">
+                    <p class="text-earth-gold font-bold text-sm uppercase tracking-widest mb-2">Desde 2012</p>
+                    <p class="serif-title text-xl italic font-bold">"Donde la tierra se encuentra con tu alma en las
+                        nubes."</p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-8">
+                <div>
+                    <span class="text-primary font-bold text-sm uppercase tracking-[0.2em] mb-4 block">Nuestra
+                        Esencia</span>
+                    <h2
+                        class="serif-title text-4xl md:text-5xl font-bold leading-tight mb-6 text-forest-deep dark:text-white">
+                        La <span class="italic">Filosofía</span> Baobab
+                    </h2>
+                    <p class="text-mist-green dark:text-gray-400 text-lg leading-relaxed mb-6">
+                        Nos inspiramos en el antiguo Baobab —el Árbol de la Vida— y su increíble resistencia. Al
+                        fusionar esta fuerza con la energía etérea del bosque nuboso de Monteverde, creamos un santuario
+                        que es a la vez arraigado y mágico.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div
+                        class="flex flex-col gap-3 p-6 rounded-2xl bg-white dark:bg-forest-deep/50 shadow-sm border border-mist-green/5">
+                        <span class="material-symbols-outlined text-primary text-3xl">eco</span>
+                        <h4 class="font-bold text-lg">Bienestar Orgánico</h4>
+                        <p class="text-sm text-mist-green">Tratamientos inspirados en los ritmos naturales de la tierra.
+                        </p>
+                    </div>
+                    <div
+                        class="flex flex-col gap-3 p-6 rounded-2xl bg-white dark:bg-forest-deep/50 shadow-sm border border-mist-green/5">
+                        <span class="material-symbols-outlined text-primary text-3xl">spa</span>
+                        <h4 class="font-bold text-lg">Esencia Pura</h4>
+                        <p class="text-sm text-mist-green">Aceites personalizados creados con botánicos del bosque
+                            nuboso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-20 flex flex-col items-center text-center">
+        <span class="text-primary font-bold text-sm uppercase tracking-[0.2em] mb-4 block">Nuestros Tratamientos</span>
+        <h2 class="serif-title text-4xl md:text-5xl font-bold mb-4">Experiencias Curadas</h2>
+        <div class="w-24 h-1 bg-primary/30 rounded-full mt-2"></div>
+    </div>
+    <section class="pb-24 pt-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex overflow-x-auto pb-10 gap-8 snap-x no-scrollbar">
+                <div class="min-w-[320px] md:min-w-[400px] snap-center group">
+                    <div class="relative aspect-[3/4] rounded-2xl overflow-hidden mb-6 shadow-lg shadow-black/5">
+                        <img alt="Masaje Bruma del Bosque"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs2b7bKvDXzp3k7uo8VCz5iZVNay65yrnEfxgrQm4U9bImDwHcbdsr9vJ9VNYau2mpGnvec2njTGqfAtY65kR2Tawa3y-TXu0uAZQycKalDw9lAk8oz5BNsUb49ywmoyq3E_Hl5RNohTXF_vjt6Mde2HQ4o5IaKoI8VCAxJ7cO_I1iAMMR2B7QNK_JxJ6qFtjcDQaO8u4FHoQ9QhSHu1DeKsX0Fc0gussSBnRwua3hzl2ARZAoF3qU1wxjShIAY6zhzWOLvAcz7Ns" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-forest-deep/80 via-transparent to-transparent opacity-60">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-center">
+                            <h3 class="serif-title text-2xl font-bold">Masaje Bruma Nubosa</h3>
+                            <span class="text-primary font-bold">$120</span>
+                        </div>
+                        <p class="text-mist-green dark:text-gray-400">Presión media relajante con aceites esenciales del
+                            bosque y varas de bambú tibias.</p>
+                        <button class="mt-4 flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+                            Ver Detalles <span class="material-symbols-outlined">trending_flat</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="min-w-[320px] md:min-w-[400px] snap-center group">
+                    <div class="relative aspect-[3/4] rounded-2xl overflow-hidden mb-6 shadow-lg shadow-black/5">
+                        <img alt="Ritual de Arcilla Dorada"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFGHnawizE_BD0pQgOVWhpbuX3HiruHyBb0TbmyB_WNrN_CnJ24qksAZNvmHETRycdeYU6uomBciPkokw4R8kedovyEk_AnJ2CQkEC6aH1Dv7WDP-NGQlIOIQON9AG4fV2gRw23jA5JHh8Q-NjHld_OmuJTz0XtsbNNN-1x9iEEKyDNttAENeREjRxc8E8GmjOcQsgqy2gVSUEFrEybG_c9wqmy6yDB6MNZN8he9VL_tBrBri7sSP59TcoyQ48627BPtEKgDhJ_mY" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-forest-deep/80 via-transparent to-transparent opacity-60">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-center">
+                            <h3 class="serif-title text-2xl font-bold">Ritual Arcilla Dorada</h3>
+                            <span class="text-primary font-bold">$145</span>
+                        </div>
+                        <p class="text-mist-green dark:text-gray-400">Desintoxicación profunda con arcilla volcánica
+                            local infundida con minerales de Monteverde.</p>
+                        <button class="mt-4 flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+                            Ver Detalles <span class="material-symbols-outlined">trending_flat</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="min-w-[320px] md:min-w-[400px] snap-center group">
+                    <div class="relative aspect-[3/4] rounded-2xl overflow-hidden mb-6 shadow-lg shadow-black/5">
+                        <img alt="Facial de Autor"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1ddQd6SFgegeLeR_Iyzf4QIrjnd0DcdV6y3ndH3IfQFaWwVQoOuygIgarWrrFYCp7eFynJLQUxAjO5aYuMDzVKofUT_mus6cSUA0IS9dz1lJq1JBDCUVb17yR7R951JJU4o4uIQN9U0sCzIFfCP-xJlKU7VrcFmBAAw9jYBZyU32SVQRhJ2TymVrBxInGXBv48PkE3ESHfRhSxlHYdDjrOA8UvO18z_8kK8p81CXkztHHKfksF3acae-D6ZCkWHzB349pQjC-K3c" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-forest-deep/80 via-transparent to-transparent opacity-60">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-center">
+                            <h3 class="serif-title text-2xl font-bold">Facial de Autor</h3>
+                            <span class="text-primary font-bold">$95</span>
+                        </div>
+                        <p class="text-mist-green dark:text-gray-400">Renovación cutánea de lujo con extracto
+                            concentrado de semilla de Baobab y vapor de orquídea.</p>
+                        <button class="mt-4 flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+                            Ver Detalles <span class="material-symbols-outlined">trending_flat</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="px-6 lg:px-12 py-20 max-w-7xl mx-auto">
+        <div class="relative bg-forest-deep rounded-3xl overflow-hidden py-24 px-10 text-center">
+            <div class="absolute inset-0 opacity-30">
+                <img alt="Bosque" class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpzCkdVEZwdW4iRLu_VawCgEmqGznLuMwWje-_vSGTQQtFdF-y9vj7sPh2jgb5BQJIO9Rq7cJWYdXtVtHwyzckQCNS19S6bV0p78ec7WH_hkgG6BVWCL21hh1_gIFUO8YKJ9G5Gc9i_zFd-qSKDDATkBJO5L1YDEkwskofIf2Pt573s3g9wbquOyBDeZdX6AmOs1x7oeO9jNKWlB4R4gapjYqYZtNScrNoClIhBsnwQy51CnL1IKByvFUv_6oRJx1xLvr6eAhgOEE" />
+            </div>
+            <div class="relative z-10">
+                <h2 class="serif-title text-4xl md:text-6xl text-white font-bold mb-8">¿Listo para entrar a <br /><span
+                        class="text-primary italic">otro mundo?</span></h2>
+                <p class="text-white/70 max-w-xl mx-auto text-lg mb-12">Se recomienda realizar reservas con al menos 48
+                    horas de antelación para garantizar su espacio en nuestro santuario.</p>
+                <button
+                    class="bg-primary text-forest-deep font-black py-4 px-12 rounded-2xl text-xl hover:shadow-[0_0_30px_rgba(19,236,128,0.4)] transition-all">
+                    Asegure su Bienestar
+                </button>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-forest-deep text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-2 flex flex-col gap-6">
+                    <div class="flex items-center gap-3">
+                        <div class="size-6 text-primary">
+                            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg font-bold">BAOBAB MAGIC SPA</h2>
+                    </div>
+                    <p class="text-white/50 max-w-sm leading-relaxed">
+                        Un santuario bilingüe de lujo en el corazón de Monteverde. Conectando la fuerza del árbol
+                        milenario con la magia efímera de las nubes.
+                    </p>
+                    <div class="flex gap-4">
+                        <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                            href="#">
+                            <img alt="Instagram" class="w-5 opacity-70"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXaP8UFjqvCl3k7EW9TphDgVQStVUTL47z8FIpgZ7osVcekjCOOoElq0dw9xy7SyRIg9qBXMetfkajS6VJZYMUkw0EXp27F70uF6CPGHo7fAE745vJX30cUcbIw3FOLNcS1AA_X7fjXJ_K3KxUBCZc5XiFnLSuqKHvXaQdQN-RzSyPSLSA1fex31_98dKYwdCgnKaoms2KsNdV0LWb6bkUlYXp8NbjHQejtiO9im7TbYXUbByQBqAHqjLKZ2tkQd6vzjpUf1ESGxo" />
+                        </a>
+                        <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                            href="#">
+                            <img alt="Facebook" class="w-5 opacity-70"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqN_WO5CB4LI6rcOtjkbMFllSH1LVILhAwJ1STupzFq00dGHjZioZ-kEeOEd5y9j1DNVkorP_77K6KygTHTBn9M9K_ujc52g1SwGjQagzyojk3zmdnIHAu9156KAHgmGlxEKBAn3_gv8PQFfkDe1SJAASq1NQAA0ttGg6ECzoP99Kc3RMu6OTzXPUyI3e7Fip-PUnQzeUUoep-HA_OsQvEkHerToELv468G8FfyFd4zn0knTPDlfor2BJqK-hcJXZ5HXBnNsV038Q" />
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Explorar</h4>
+                    <ul class="flex flex-col gap-3 text-white/50 text-sm">
+                        <li><a class="hover:text-primary" href="#">Servicios de Spa</a></li>
+                        <li><a class="hover:text-primary" href="#">Rituales de Paquete</a></li>
+                        <li><a class="hover:text-primary" href="#">Eventos Corporativos</a></li>
+                        <li><a class="hover:text-primary" href="#">Certificados de Regalo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Contacto</h4>
+                    <ul class="flex flex-col gap-3 text-white/50 text-sm">
+                        <li class="flex gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">location_on</span>
+                            Monteverde, Puntarenas, CR
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">call</span>
+                            +506 2645-MAGIC
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="material-symbols-outlined text-primary text-sm">mail</span>
+                            hello@baobabmagicspa.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-white/30 text-xs">© 2024 Baobab Magic Spa. Diseñado para el Bienestar.</p>
+                <div class="flex gap-8 text-white/30 text-xs uppercase tracking-widest font-bold">
+                    <a class="hover:text-white transition-colors" href="#">Política de Privacidad</a>
+                    <a class="hover:text-white transition-colors" href="#">Términos de Magia</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div data-location="Monteverde, Costa Rica" style="display: none;"></div>
+
+</body>
+
+</html>
