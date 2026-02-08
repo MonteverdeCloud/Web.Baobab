@@ -69,63 +69,66 @@
 
 <body class="bg-background-light dark:bg-background-dark text-forest-deep dark:text-white min-h-screen">
     <!-- Navigation Bar -->
-    <header
-        class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10 px-4 md:px-20 lg:px-40 py-3">
-        <div class="max-w-[1200px] mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="text-primary">
+    <header class="fixed top-0 w-full z-50 border-b border-mist-green/10 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
                     <div class="size-12 text-gray-800 dark:text-gray-200">
                         <img src="/assets/images/icons/logo.svg" alt="Logo" class="w-full h-full">
                     </div>
+                    <h2 class="text-xl font-bold tracking-tight">Baobab SPA</h2>
                 </div>
-                <h2 class="text-xl font-bold tracking-tight">Baobab Spa</h2>
-            </div>
-            <nav class="hidden md:flex flex-1 justify-center gap-8">
-                <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">Inicio</a>
-                <a class="text-sm font-semibold hover:text-primary transition-colors"
-                    href="servicios.html">Servicios</a>
-                <a class="text-sm font-semibold text-primary" href="#">Contacto</a>
-            </nav>
-            <div class="flex items-center gap-3">
-                <!-- <div class="relative lang-dropdown">
-                    <button
-                        class="flex items-center gap-2 px-3 py-2 text-sm font-medium border border-mist-green/20 rounded-lg hover:bg-mist-green/5 transition-colors">
-                        <span class="material-symbols-outlined text-lg">language</span>
-                        ES
-                        <span class="material-symbols-outlined text-xs">expand_more</span>
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="index.html">Inicio</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors"
+                        href="servicios.html">Servicios</a>
+                    <a class="text-sm font-semibold text-primary" href="#">Contacto</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <!-- <div class="relative lang-dropdown">
+                        <button
+                            class="flex items-center gap-2 px-3 py-2 text-sm font-medium border border-mist-green/20 rounded-lg hover:bg-mist-green/5 transition-colors">
+                            <span class="material-symbols-outlined text-lg">language</span>
+                            ES
+                            <span class="material-symbols-outlined text-xs">expand_more</span>
+                        </button>
+                        <div
+                            class="lang-menu hidden absolute right-0 top-full mt-1 w-32 bg-white dark:bg-forest-deep rounded-xl shadow-xl border border-mist-green/10 py-2 overflow-hidden">
+                            <a class="block px-4 py-2 text-xs font-bold hover:bg-primary/10 hover:text-primary transition-colors"
+                                href="#">ESPAÑOL</a>
+                            <a class="block px-4 py-2 text-xs font-bold text-mist-green hover:bg-primary/10 hover:text-primary transition-colors"
+                                href="#">ENGLISH</a>
+                            <a class="block px-4 py-2 text-xs font-bold text-mist-green/40 cursor-not-allowed"
+                                href="#">FRANÇAIS</a>
+                        </div>
+                    </div> -->
+                    <button id="mobile-menu-btn" class="md:hidden text-forest-deep dark:text-white">
+                        <span class="material-symbols-outlined">menu</span>
                     </button>
-                    <div
-                        class="lang-menu hidden absolute right-0 top-full mt-1 w-32 bg-white dark:bg-forest-deep rounded-xl shadow-xl border border-mist-green/10 py-2 overflow-hidden">
-                        <a class="block px-4 py-2 text-xs font-bold hover:bg-primary/10 hover:text-primary transition-colors"
-                            href="#">ESPAÑOL</a>
-                        <a class="block px-4 py-2 text-xs font-bold text-mist-green hover:bg-primary/10 hover:text-primary transition-colors"
-                            href="#">ENGLISH</a>
-                        <a class="block px-4 py-2 text-xs font-bold text-mist-green/40 cursor-not-allowed"
-                            href="#">FRANÇAIS</a>
-                    </div>
-                </div> -->
-                <button id="mobile-menu-btn" class="md:hidden text-forest-deep dark:text-white">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
+                </div>
             </div>
         </div>
 
     </header>
-    <main class="max-w-[1200px] mx-auto px-4 py-8 lg:py-12">
-        <!-- Hero Background Section -->
-        <div class="mb-12">
-            <div
-                class="relative w-full rounded-xl lg:rounded-3xl overflow-hidden aspect-video md:aspect-[21/9] lg:aspect-[3/1]">
-                <div class="absolute inset-0 bg-cover bg-center" data-alt="Monteverde cloud forest landscape in mist"
-                    style='background-image: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 60%), url("https://scontent.fsyq1-1.fna.fbcdn.net/v/t51.82787-15/543010262_18035777156699250_3167294959278366285_n.jpg?stp=dst-jpegr_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=r8mFLNXXBXwQ7kNvwExDycy&_nc_oc=AdnmPtxDsLA6a6Yv-OOLo_I4XhruOzU8Jgyoy_QNszCH-4kfIviFO0X3qONe8oDBnLU&_nc_zt=23&se=-1&_nc_ht=scontent.fsyq1-1.fna&_nc_gid=IlrW3AygJLDO4CvxgV4Lrg&oh=00_AfvUQGDlxUmWGrZOM9G2GhWjAnZRSsYsFabtcaeWTJ5WKg&oe=698DE13C");'>
-                </div>
-                <div class="absolute inset-0 flex flex-col justify-center px-8 lg:px-16 text-white">
-                    <h1 class="text-4xl lg:text-6xl font-extrabold mb-4 drop-shadow-lg">Contáctanos</h1>
-                    <p class="text-lg lg:text-xl max-w-lg opacity-90 drop-shadow-md">Conecta con la esencia pura de
-                        Monteverde y regálate un momento de paz mágica.</p>
-                </div>
+    <!-- Hero Section -->
+    <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-forest-deep/60 z-10"></div>
+            <div class="w-full h-full bg-cover bg-center"
+                style='background-image: url("https://scontent.fsyq1-1.fna.fbcdn.net/v/t51.82787-15/543010262_18035777156699250_3167294959278366285_n.jpg?stp=dst-jpegr_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=r8mFLNXXBXwQ7kNvwExDycy&_nc_oc=AdnmPtxDsLA6a6Yv-OOLo_I4XhruOzU8Jgyoy_QNszCH-4kfIviFO0X3qONe8oDBnLU&_nc_zt=23&se=-1&_nc_ht=scontent.fsyq1-1.fna&_nc_gid=IlrW3AygJLDO4CvxgV4Lrg&oh=00_AfvUQGDlxUmWGrZOM9G2GhWjAnZRSsYsFabtcaeWTJ5WKg&oe=698DE13C");'>
             </div>
         </div>
+        <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+            <h1 class="serif-title text-white text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl">
+                Contáctanos
+            </h1>
+            <p class="text-white/90 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+                Conecta con la esencia pura de Monteverde y regálate un momento de paz mágica.
+            </p>
+        </div>
+    </section>
+    <main class="max-w-[1200px] mx-auto px-4 py-8 lg:py-12">
+
         <!-- Contact Content Grid -->
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             <!-- Left Column: Direct Contact & Map -->
