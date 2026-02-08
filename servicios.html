@@ -130,8 +130,26 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-6 lg:px-12 py-12 md:py-20 space-y-20 md:space-y-32">
 
+        <!-- Service Filter -->
+        <div class="flex justify-center md:justify-end">
+            <div class="relative w-full md:w-auto">
+                <select id="service-filter"
+                    class="appearance-none w-full md:w-72 bg-white dark:bg-forest-deep border border-mist-green/20 text-forest-deep dark:text-white py-4 px-6 pr-12 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary cursor-pointer shadow-lg font-bold text-lg">
+                    <option value="all">Ver Todos los Servicios</option>
+                    <option value="masajes">Masajes Relajantes</option>
+                    <option value="terapias-master">Terapias Master</option>
+                    <option value="corporales">Tratamientos Corporales</option>
+                    <option value="faciales">Tratamientos Faciales</option>
+                    <option value="paquetes">Paquetes de Lujo</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-primary">
+                    <span class="material-symbols-outlined">filter_list</span>
+                </div>
+            </div>
+        </div>
+
         <!-- Servicios de Masaje -->
-        <section id="masajes" class="scroll-mt-28">
+        <section id="masajes" class="scroll-mt-28 transition-all duration-500 ease-in-out">
             <div class="text-center mb-16">
                 <span class="text-primary font-bold text-sm uppercase tracking-[0.2em] mb-2 block">Relajación
                     Profunda</span>
@@ -586,6 +604,42 @@
 
         mobileMenuBtn.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', toggleMenu);
+
+        // Service Filter Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterSelect = document.getElementById('service-filter');
+            const sections = {
+                'masajes': document.getElementById('masajes'),
+                'terapias-master': document.getElementById('terapias-master'),
+                'corporales': document.getElementById('corporales'),
+                'faciales': document.getElementById('faciales'),
+                'paquetes': document.getElementById('paquetes')
+            };
+
+            filterSelect.addEventListener('change', (e) => {
+                const selectedCategory = e.target.value;
+
+                Object.keys(sections).forEach(key => {
+                    const section = sections[key];
+                    if (selectedCategory === 'all' || selectedCategory === key) {
+                        section.classList.remove('hidden');
+                        // Add fade-in animation
+                        section.classList.add('animate-fade-in');
+                        setTimeout(() => section.classList.remove('animate-fade-in'), 500);
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+
+                // Smooth scroll to top of content
+                /*
+                window.scrollTo({
+                    top: document.querySelector('main').offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                */
+            });
+        });
     </script>
 </body>
 
