@@ -87,27 +87,7 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu"
-            class="fixed inset-0 z-50 bg-background-light dark:bg-background-dark transform translate-x-full transition-transform duration-300 md:hidden block">
-            <div class="absolute top-6 right-6 z-20">
-                <button id="close-menu-btn" class="text-forest-deep dark:text-white p-2">
-                    <span class="material-symbols-outlined text-3xl">close</span>
-                </button>
-            </div>
-            <div class="w-full h-full flex flex-col">
-                <div class="h-24 flex-shrink-0"></div>
-                <div class="flex flex-col gap-4 w-full px-8 py-6">
-                    <a class="w-full text-center py-4 bg-white/5 dark:bg-black/20 rounded-xl text-2xl font-bold hover:text-primary hover:bg-white/10 transition-all"
-                        href="index.html">Inicio</a>
-                    <a class="w-full text-center py-4 bg-primary/20 text-primary rounded-xl text-2xl font-bold hover:bg-primary/30 transition-all"
-                        href="servicios.html">Servicios</a>
-                    <a class="w-full text-center py-4 bg-white/5 dark:bg-black/20 rounded-xl text-2xl font-bold hover:text-primary hover:bg-white/10 transition-all"
-                        href="contacto.html">Contacto</a>
-                </div>
-                <div class="h-10 flex-shrink-0"></div>
-            </div>
-        </div>
+
     </header>
 
     <!-- Hero Section -->
@@ -607,6 +587,64 @@
         </div>
     </footer>
 
+
+
+    // Service Filter Logic
+    document.addEventListener('DOMContentLoaded', () => {
+    const filterSelect = document.getElementById('service-filter');
+    const sections = {
+    'masajes': document.getElementById('masajes'),
+    'terapias-master': document.getElementById('terapias-master'),
+    'corporales': document.getElementById('corporales'),
+    'faciales': document.getElementById('faciales'),
+    'paquetes': document.getElementById('paquetes')
+    };
+
+    filterSelect.addEventListener('change', (e) => {
+    const selectedCategory = e.target.value;
+
+    Object.keys(sections).forEach(key => {
+    const section = sections[key];
+    if (selectedCategory === 'all' || selectedCategory === key) {
+    section.classList.remove('hidden');
+    // Add fade-in animation
+    section.classList.add('animate-fade-in');
+    setTimeout(() => section.classList.remove('animate-fade-in'), 500);
+    } else {
+    section.classList.add('hidden');
+    }
+    });
+
+    // Smooth scroll to top of content
+    /*
+    window.scrollTo({
+    top: document.querySelector('main').offsetTop - 100,
+    behavior: 'smooth'
+    });
+    */
+    });
+    });
+    </script>
+    <div id="mobile-menu"
+        class="fixed inset-0 z-50 bg-background-light/95 dark:bg-background-dark/95 transform translate-x-full transition-transform duration-300 md:hidden block">
+        <div class="absolute top-6 right-6 z-20">
+            <button id="close-menu-btn" class="text-forest-deep dark:text-white p-2">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+        </div>
+        <div class="w-full h-full flex flex-col">
+            <div class="h-24 flex-shrink-0"></div>
+            <div class="flex flex-col gap-4 w-full px-8 py-6">
+                <a class="w-full text-center py-4 bg-white/5 dark:bg-black/20 rounded-xl text-2xl font-bold hover:text-primary hover:bg-white/10 transition-all"
+                    href="index.html">Inicio</a>
+                <a class="w-full text-center py-4 bg-primary/20 text-primary rounded-xl text-2xl font-bold hover:bg-primary/30 transition-all"
+                    href="servicios.html">Servicios</a>
+                <a class="w-full text-center py-4 bg-white/5 dark:bg-black/20 rounded-xl text-2xl font-bold hover:text-primary hover:bg-white/10 transition-all"
+                    href="contacto.html">Contacto</a>
+            </div>
+            <div class="h-10 flex-shrink-0"></div>
+        </div>
+    </div>
     <script>
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
@@ -623,42 +661,6 @@
 
         mobileMenuBtn.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', toggleMenu);
-
-        // Service Filter Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterSelect = document.getElementById('service-filter');
-            const sections = {
-                'masajes': document.getElementById('masajes'),
-                'terapias-master': document.getElementById('terapias-master'),
-                'corporales': document.getElementById('corporales'),
-                'faciales': document.getElementById('faciales'),
-                'paquetes': document.getElementById('paquetes')
-            };
-
-            filterSelect.addEventListener('change', (e) => {
-                const selectedCategory = e.target.value;
-
-                Object.keys(sections).forEach(key => {
-                    const section = sections[key];
-                    if (selectedCategory === 'all' || selectedCategory === key) {
-                        section.classList.remove('hidden');
-                        // Add fade-in animation
-                        section.classList.add('animate-fade-in');
-                        setTimeout(() => section.classList.remove('animate-fade-in'), 500);
-                    } else {
-                        section.classList.add('hidden');
-                    }
-                });
-
-                // Smooth scroll to top of content
-                /*
-                window.scrollTo({
-                    top: document.querySelector('main').offsetTop - 100,
-                    behavior: 'smooth'
-                });
-                */
-            });
-        });
     </script>
     <script src="assets/js/whatsapp.js"></script>
 </body>
