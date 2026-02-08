@@ -607,43 +607,42 @@
         </div>
     </footer>
 
+    <script>
+        // Service Filter Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterSelect = document.getElementById('service-filter');
+            const sections = {
+                'masajes': document.getElementById('masajes'),
+                'terapias-master': document.getElementById('terapias-master'),
+                'corporales': document.getElementById('corporales'),
+                'faciales': document.getElementById('faciales'),
+                'paquetes': document.getElementById('paquetes')
+            };
 
+            filterSelect.addEventListener('change', (e) => {
+                const selectedCategory = e.target.value;
 
-    // Service Filter Logic
-    document.addEventListener('DOMContentLoaded', () => {
-    const filterSelect = document.getElementById('service-filter');
-    const sections = {
-    'masajes': document.getElementById('masajes'),
-    'terapias-master': document.getElementById('terapias-master'),
-    'corporales': document.getElementById('corporales'),
-    'faciales': document.getElementById('faciales'),
-    'paquetes': document.getElementById('paquetes')
-    };
+                Object.keys(sections).forEach(key => {
+                    const section = sections[key];
+                    if (selectedCategory === 'all' || selectedCategory === key) {
+                        section.classList.remove('hidden');
+                        // Add fade-in animation
+                        section.classList.add('animate-fade-in');
+                        setTimeout(() => section.classList.remove('animate-fade-in'), 500);
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
 
-    filterSelect.addEventListener('change', (e) => {
-    const selectedCategory = e.target.value;
-
-    Object.keys(sections).forEach(key => {
-    const section = sections[key];
-    if (selectedCategory === 'all' || selectedCategory === key) {
-    section.classList.remove('hidden');
-    // Add fade-in animation
-    section.classList.add('animate-fade-in');
-    setTimeout(() => section.classList.remove('animate-fade-in'), 500);
-    } else {
-    section.classList.add('hidden');
-    }
-    });
-
-    // Smooth scroll to top of content
-    /*
-    window.scrollTo({
-    top: document.querySelector('main').offsetTop - 100,
-    behavior: 'smooth'
-    });
-    */
-    });
-    });
+                // Smooth scroll to top of content
+                /*
+                window.scrollTo({
+                    top: document.querySelector('main').offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                */
+            });
+        });
     </script>
     <div id="mobile-menu"
         class="fixed inset-0 z-50 bg-background-light/95 dark:bg-background-dark/95 transform translate-x-full transition-transform duration-300 md:hidden block">
