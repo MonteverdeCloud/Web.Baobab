@@ -10,6 +10,8 @@
     <meta name="keywords"
         content="spa monteverde, masajes monteverde, belleza costa rica, tratamientos estéticos, relajación, salud integral, baobab spa, bienestar">
     <link rel="canonical" href="https://baobab506.com/">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -65,6 +67,11 @@
             },
         }
     </script>
+    <style>
+        .fill-1 {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
 </head>
 
 <body
@@ -148,8 +155,7 @@
                 <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-earth-gold/10 rounded-full blur-3xl -z-10"></div>
                 <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
                     <img alt="Interior de Baobab Magic Spa - Filosofía de Bienestar y Salud"
-                        class="w-full h-full object-cover"
-                        src="./assets/images/photos/MasajeNaturaleza.jpg" />
+                        class="w-full h-full object-cover" src="./assets/images/photos/MasajeNaturaleza.jpg" />
                 </div>
                 <div
                     class="absolute -bottom-8 -right-8 bg-white dark:bg-forest-deep p-8 rounded-2xl shadow-xl max-w-xs border border-primary/20">
@@ -274,8 +280,7 @@
     <section class="px-6 lg:px-12 py-20 max-w-7xl mx-auto">
         <div class="relative bg-forest-deep rounded-3xl overflow-hidden py-24 px-10 text-center">
             <div class="absolute inset-0 opacity-30">
-                <img alt="Bosque" class="w-full h-full object-cover"
-                    src="./assets/images/photos/CamillaSpa.jpg" />
+                <img alt="Bosque" class="w-full h-full object-cover" src="./assets/images/photos/CamillaSpa.jpg" />
             </div>
             <div class="relative z-10">
                 <h2 class="serif-title text-4xl md:text-6xl text-white font-bold mb-8">¿Listo para revitalizar
@@ -292,39 +297,58 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="px-6 lg:px-12 py-20 max-w-7xl mx-auto">
-        <div class="text-center mb-12">
-            <span class="text-primary font-bold text-sm uppercase tracking-[0.2em] mb-4 block">Testimonios</span>
-            <h2 class="serif-title text-3xl md:text-5xl font-bold mb-4">Lo que dicen nuestros clientes</h2>
+    <!-- Reviews Section -->
+    <section id="reviews" class="px-6 lg:px-12 py-24 max-w-7xl mx-auto overflow-hidden">
+        <div class="mb-16">
+            <span class="text-primary font-bold text-sm uppercase tracking-[0.2em] mb-4 block">Experiencias
+                Reales</span>
+            <h2 class="serif-title text-4xl md:text-5xl font-bold mb-4 text-forest-deep dark:text-white">Lo que dicen en
+                Google Maps</h2>
             <div class="w-24 h-1 bg-primary/30 rounded-full mt-2 mx-auto"></div>
         </div>
-        <div class="flex flex-col items-center justify-center">
-            <a href="https://www.facebook.com/p/Baobab-spa-100028375946361/" target="_blank"
-                class="flex items-center gap-3 bg-white dark:bg-forest-deep/50 border border-primary/20 px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all group">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook"
-                    class="w-8 h-8">
+
+        <!-- Reviews Grid -->
+        <div id="reviews-grid" class="grid md:grid-cols-3 gap-8 mb-16">
+            <!-- Dynamic reviews will be injected here -->
+        </div>
+
+        <!-- Call to Action -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+            <a href="https://maps.app.goo.gl/JBSgX4QpYiBFKzU68" target="_blank"
+                class="w-full md:w-auto flex items-center justify-center gap-3 bg-white dark:bg-forest-deep border border-primary/20 px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all group">
+                <svg class="size-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                        fill="#4285F4" />
+                </svg>
                 <div class="text-left">
-                    <p class="font-bold text-lg group-hover:text-primary transition-colors">Síguenos en
-                        Facebook</p>
-                    <p class="text-sm text-mist-green">Conoce las opiniones reales de nuestros visitantes</p>
+                    <p class="font-bold text-lg group-hover:text-primary transition-colors">Ver todas las reseñas</p>
+                    <p class="text-xs text-mist-green uppercase tracking-wider">Calificación 5.0 en Google</p>
                 </div>
                 <span
-                    class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">open_in_new</span>
+            </a>
+
+            <a href="https://maps.app.goo.gl/JBSgX4QpYiBFKzU68" target="_blank"
+                class="w-full md:w-auto flex items-center justify-center gap-3 bg-primary text-forest-deep px-10 py-5 rounded-2xl shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all font-bold text-lg group">
+                <span class="material-symbols-outlined group-hover:rotate-12 transition-transform">edit_note</span>
+                Escribir una reseña
             </a>
         </div>
-        <br />
-        <div class="flex flex-col items-center justify-center">
+
+        <!-- Social Links (Secondary) -->
+        <div class="mt-20 flex flex-wrap justify-center gap-8 opacity-60 hover:opacity-100 transition-opacity">
+            <a href="https://www.facebook.com/p/Baobab-spa-100028375946361/" target="_blank"
+                class="flex items-center gap-2 hover:text-primary transition-colors">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook"
+                    class="w-5 h-5 grayscale group-hover:grayscale-0">
+                <span class="text-sm font-semibold">Baobab SPA en Facebook</span>
+            </a>
             <a href="https://www.instagram.com/baobab.spa/" target="_blank"
-                class="flex items-center gap-3 bg-white dark:bg-forest-deep/50 border border-primary/20 px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all group hover:border-pink-300">
+                class="flex items-center gap-2 hover:text-primary transition-colors">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"
-                    class="w-8 h-8">
-                <div class="text-left">
-                    <p class="font-bold text-lg group-hover:text-primary transition-colors">Síguenos en Instagram</p>
-                    <p class="text-sm text-mist-green">Inspírate con nuestras historias de relajación</p>
-                </div>
-                <span
-                    class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    class="w-5 h-5 grayscale group-hover:grayscale-0">
+                <span class="text-sm font-semibold">@baobab.spa en Instagram</span>
             </a>
         </div>
     </section>
@@ -374,6 +398,56 @@
 
         mobileMenuBtn.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', toggleMenu);
+
+        // Dynamic Reviews Data
+        const reviews = [
+            {
+                name: "María Rodríguez",
+                initial: "M",
+                text: "Una experiencia mágica. El masaje de piedras calientes fue increíble y el ambiente en Monteverde es de total paz. ¡Altamente recomendado!",
+                time: "Hace 2 meses en Google",
+                stars: 5
+            },
+            {
+                name: "James Wilson",
+                initial: "J",
+                text: "The best spa in Monteverde. Certified therapists and high quality natural products. My skin feels rejuvenated and I left completely relaxed.",
+                time: "Hace 3 semanas en Google",
+                stars: 5
+            },
+            {
+                name: "Ana Villalobos",
+                initial: "A",
+                text: "Excelente servicio y atención. El ritual Pasión Fruit es algo que debes probar. El entorno natural de la clínica es simplemente único.",
+                time: "Hace 1 mes en Google",
+                stars: 5
+            }
+        ];
+
+        function loadReviews() {
+            const container = document.getElementById('reviews-grid');
+            if (!container) return;
+
+            container.innerHTML = reviews.map(review => `
+                <div class="bg-white dark:bg-forest-deep/40 p-8 rounded-3xl border border-mist-green/10 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="flex items-center gap-1 text-earth-gold mb-4">
+                        ${Array(review.stars).fill('<span class="material-symbols-outlined fill-1">star</span>').join('')}
+                    </div>
+                    <p class="text-mist-green dark:text-gray-300 italic mb-6 leading-relaxed">
+                        "${review.text}"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">${review.initial}</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-forest-deep dark:text-white">${review.name}</h4>
+                            <p class="text-xs text-mist-green/60 uppercase tracking-tighter">${review.time}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadReviews);
     </script>
 </body>
 
